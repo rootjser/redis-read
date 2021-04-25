@@ -28,3 +28,6 @@
 |  ----  | ----  |  ----  | ----  | 
 | 1、LPUSH，将消息队列</br>2、BRPOP，从队列中取出消息，阻塞模式 | 1、实现简单</br>2、Reids支持持久化消息，意味着消息不会丢失，可以重复查看（注意不是消费，只看不用，LRANGE类的指令）。</br>3、可以保证顺序，保证使用LPUSH命令，可以保证消息的顺序性</br>4、使用RPUSH，可以将消息放在队列的开头，达到优先消息的目的，可以实现简易的消息优先队列。|1、做消费确认ACK比较麻烦，就是不能保证消费者在读取之后，未处理后的宕机问题。导致消息意外丢失。通常需要自己维护一个Pending列表，保证消息的处理确认。</br>2、不能做广播模式，例如典型的Pub/Discribe模式。</br>3、不能重复消费，一旦消费就会被删除</br>4、不支持分组消费，需要自己在业务逻辑层解决|[Redis应用-异步消息队列与延时队列](https://mp.weixin.qq.com/s?__biz=MzI2NzMyMDQ0NQ==&mid=100000206&idx=1&sn=5e18a6aa07b43b107041444499eb2c77&chksm=6a81ecdc5df665caead4c7575bbb09ff2d72040b68239581264f3cfa69723397cb0dcbc0da85#rd)|
 
+
+### redis 分布式锁
+<https://xiaomi-info.github.io/2019/12/17/redis-distributed-lock/>
